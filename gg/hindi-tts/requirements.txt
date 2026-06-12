@@ -1,0 +1,4 @@
+Flask==2.3.3
+edge-tts==0.2.0
+pydub==0.25.1
+Werkzeug==2.3.7

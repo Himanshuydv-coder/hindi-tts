@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हिंदी टेक्स्ट टू स्पीच - Hindi TTS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                🎵 हिंदी टेक्स्ट टू स्पीच
+            </h1>
+            <p class="subtitle">अपना पाठ दर्ज करें और सुंदर हिंदी ऑडियो प्राप्त करें</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="form-group">
+                    <label for="textInput" class="label">
+                        पाठ दर्ज करें (5000-10000+ शब्द तक)
+                    </label>
+                    
+                    <div class="textarea-wrapper">
+                        <textarea 
+                            id="textInput" 
+                            class="textarea" 
+                            placeholder="यहाँ अपना हिंदी पाठ दर्ज करें... उदाहरण: नमस्ते, यह एक परीक्षण है।"
+                            maxlength="10000"
+                            spellcheck="true">
+                        </textarea>
+                        <div class="char-counter">
+                            <span id="charCount">0</span> / <span id="maxChars">10000</span> वर्ण
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group inline">
+                        <label for="voiceSelect" class="label">Select Voice</label>
+                        <select id="voiceSelect" class="select">
+                            <optgroup label="Male Voices">
+                                <option value="Deep Male">Deep Male</option>
+                                <option value="Natural Male" selected>Natural Male</option>
+                                <option value="Professional Male">Professional Male</option>
+                            </optgroup>
+                            <optgroup label="Female Voices">
+                                <option value="Soft Female">Soft Female</option>
+                                <option value="Natural Female">Natural Female</option>
+                                <option value="Professional Female">Professional Female</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group inline">
+                        <label for="speedSelect" class="label">Speech Speed</label>
+                        <select id="speedSelect" class="select">
+                            <option value="Slow">Slow</option>
+                            <option value="Normal" selected>Normal</option>
+                            <option value="Fast">Fast</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="previewBtn" class="btn btn-outline">
+                        🔊 Voice Preview
+                    </button>
+                    <button id="generateBtn" class="btn btn-primary">
+                        <span class="btn-text">🎙️ ऑडियो उत्पन्न करें</span>
+                        <span class="btn-loader hidden" id="btnLoader">
+                            <svg class="spinner" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Status Messages -->
+            <div id="messageContainer" class="message-container"></div>
+
+            <!-- Audio Player Section -->
+            <section id="audioSection" class="audio-section hidden">
+                <div class="audio-card">
+                    <h3>✅ आपकी ऑडियो तैयार है!</h3>
+                    
+                    <div class="audio-player-wrapper">
+                        <audio id="audioPlayer" controls class="audio-player">
+                            <p>आपके ब्राउज़र में ऑडियो प्लेयर समर्थित नहीं है।</p>
+                        </audio>
+                    </div>
+
+                    <div class="audio-actions">
+                        <button id="downloadBtn" class="btn btn-success">
+                            ⬇️ डाउनलोड करें
+                        </button>
+                        <button id="newBtn" class="btn btn-secondary">
+                            ➕ नया टेक्स्ट
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading Animation -->
+            <div id="loadingContainer" class="loading-container hidden">
+                <div class="loading-spinner">
+                    <div class="spinner-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p id="loadingText" class="loading-text">ऑडियो उत्पन्न किया जा रहा है...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>हिंदी TTS - Flask, gTTS, और Python द्वारा निर्मित</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
